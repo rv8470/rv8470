@@ -72,15 +72,18 @@ struct TaskEditorView: View {
                 }
             }
             .onAppear(perform: load)
+            .task {
+                // Pas focussen als het venster helemaal open is; te vroeg focussen
+                // geeft op iPad een cursor zonder schermtoetsenbord.
+                guard task == nil else { return }
+                try? await Task.sleep(for: .milliseconds(600))
+                titleFocused = true
+            }
         }
-        .presentationDetents([.large])
     }
 
     private func load() {
-        guard let task else {
-            titleFocused = true
-            return
-        }
+        guard let task else { return }
         title = task.title
         notes = task.notes
         hasDueDate = task.dueDate != nil
