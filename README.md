@@ -1,11 +1,12 @@
-# Taken – een takenlijst-app voor iPhone
+# Taken – een takenlijst-app voor iPhone en iPad
 
-Een eenvoudige to-do-app voor de iPhone 17 (iOS 26), gemaakt met **SwiftUI** en **SwiftData**.
+Een eenvoudige to-do-app gemaakt met **SwiftUI** en **SwiftData**. Je hebt er geen Mac
+voor nodig: de app is een **Swift Playgrounds**-project dat je op een iPad kunt bouwen en draaien.
 
 ## Functies
 
 - Taken toevoegen met titel, notities, deadline en prioriteit (laag / normaal / hoog)
-- Afvinken met een tik op het rondje (met trilfeedback), of door naar rechts te vegen
+- Afvinken met een tik op het rondje, of door naar rechts te vegen
 - Naar links vegen om te verwijderen
 - Tik op een taak om hem te bewerken
 - Filter op *Alles*, *Open* of *Afgerond*, en wis afgeronde taken in één keer
@@ -13,40 +14,42 @@ Een eenvoudige to-do-app voor de iPhone 17 (iOS 26), gemaakt met **SwiftUI** en 
 - Taken die over de deadline zijn, krijgen een rode datum
 - Alles wordt lokaal op het toestel opgeslagen
 
-## Vereisten
+## Op je iPad zetten
 
-- Een Mac met **Xcode 26** of nieuwer
-- Een iPhone met iOS 26 (bijv. iPhone 17), of de simulator
+Je hebt een iPad met iPadOS 17 of nieuwer nodig.
 
-## Starten
+1. Installeer de gratis app **Swift Playgrounds** uit de App Store.
+2. Open in Safari op je iPad deze repository op GitHub en kies de branch
+   `claude/iphone17-app-504kt1`.
+3. Tik op de groene knop **Code** › **Download ZIP**.
+4. Open de app **Bestanden**, ga naar **Downloads** en tik op het zip-bestand om het uit te pakken.
+5. Open de uitgepakte map en tik op **Taken.swiftpm**. Het project opent in Swift Playgrounds.
+   (Opent het niet vanzelf? Kies in Swift Playgrounds dan zelf **Taken.swiftpm** via het bestandsoverzicht.)
+6. Tik op de afspeelknop ▶︎ om de app te bouwen en te starten.
 
-1. Clone deze repository op je Mac.
-2. Open `Taken.xcodeproj` in Xcode.
-3. Kies bovenaan een simulator (bijv. *iPhone 17*) en druk op **⌘R**.
+## Op je iPhone zetten
 
-### Op je eigen iPhone
+Een app die je in Swift Playgrounds bouwt, kun je niet rechtstreeks op je iPhone zetten.
+Daarvoor heb je een betaald **Apple Developer-account** (€99 per jaar) nodig. Dan kun je in
+Swift Playgrounds de app naar **App Store Connect** uploaden en hem via **TestFlight**
+op je iPhone installeren.
 
-1. Sluit je iPhone aan en zet op de iPhone **Ontwikkelaarsmodus** aan
-   (Instellingen › Privacy en beveiliging › Ontwikkelaarsmodus).
-2. Klik in Xcode op het project **Taken** › target **Taken** › tab **Signing & Capabilities**.
-3. Kies bij *Team* je Apple ID (een gratis account werkt ook). Pas zo nodig de
-   *Bundle Identifier* aan naar iets unieks, bijv. `com.jouwnaam.Taken`.
-4. Kies je iPhone als doel en druk op **⌘R**.
+## Met een Mac (optioneel)
+
+Open de map `Taken.swiftpm` in Xcode, kies een simulator en druk op **⌘R**.
 
 ## Projectstructuur
 
 ```
-Taken/
-├── TakenApp.swift          # Startpunt van de app
+Taken.swiftpm/
+├── Package.swift            # Instellingen van de app (naam, icoon, apparaten)
+├── TakenApp.swift           # Startpunt van de app
 ├── Models/
-│   ├── TaskItem.swift      # Het SwiftData-model voor een taak
-│   └── PreviewData.swift   # Voorbeelddata voor Xcode-previews
+│   ├── TaskItem.swift       # Het SwiftData-model voor een taak
+│   └── PreviewData.swift    # Voorbeelddata voor previews
 ├── Views/
-│   ├── ContentView.swift   # Hoofdscherm met lijst, filter en zoeken
-│   ├── TaskRow.swift       # Eén regel in de lijst
-│   └── TaskEditorView.swift# Formulier voor nieuwe of bestaande taak
-└── Assets.xcassets         # App-icoon en accentkleur
+│   ├── ContentView.swift    # Hoofdscherm met lijst, filter en zoeken
+│   ├── TaskRow.swift        # Eén regel in de lijst
+│   └── TaskEditorView.swift # Formulier voor nieuwe of bestaande taak
+└── Assets.xcassets          # App-icoon en accentkleur
 ```
-
-Het project gebruikt de map-synchronisatie van Xcode: nieuwe bestanden die je in de
-map `Taken/` zet, worden automatisch meegenomen.
